@@ -45,11 +45,19 @@ export default function useAgeGroupPrice() {
     return isOverlap;
   };
 
+  const isAddButtonDisable = () => {
+    const { notInclude } = Utils.getNumberIntervals(
+      ageGroupPriceArray.map(({ ageGroup }) => ageGroup)
+    );
+    return notInclude.length === 0;
+  }
+
   return {
     deleteAgeGroupPrice,
     addAgeGroupPrice,
     changeAgeGroupPrice,
     checkAgeGroupOverlap,
+    isAddButtonDisable,
     ageGroupPriceArray,
     isAdd,
   };

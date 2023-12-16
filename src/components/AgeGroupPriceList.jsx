@@ -10,7 +10,7 @@ const AddPriceCardButton = styled(Button)`
   padding: 0px;
   margin-bottom: 20px;
   color: #27b7ab;
-  &:hover {
+  &:not(:disabled):hover {
     color: #27b7ab !important;
     background-color: rgba(39, 183, 171, 0.1) !important;
   }
@@ -24,6 +24,7 @@ function AgeGroupPriceList({ onChange }) {
     changeAgeGroupPrice,
     checkAgeGroupOverlap,
     deleteAgeGroupPrice,
+    isAddButtonDisable,
     isAdd,
   } = useAgeGroupPrice();
 
@@ -45,7 +46,7 @@ function AgeGroupPriceList({ onChange }) {
     <Space direction="vertical" ref={listRef}>
       {ageGroupPriceArray.map((data, i) => (
         <AgeGroupPriceCard
-        ageGroupPriceArray={ageGroupPriceArray}
+          ageGroupPriceArray={ageGroupPriceArray}
           deleteAgeGroupPrice={deleteAgeGroupPrice}
           changeAgeGroupPrice={changeAgeGroupPrice}
           checkAgeGroupOverlap={checkAgeGroupOverlap}
@@ -54,7 +55,11 @@ function AgeGroupPriceList({ onChange }) {
         />
       ))}
       <Flex>
-        <AddPriceCardButton type="text" onClick={addAgeGroupPrice}>
+        <AddPriceCardButton
+          type="text"
+          onClick={addAgeGroupPrice}
+          disabled={isAddButtonDisable()}
+        >
           ＋新增價格設定
         </AddPriceCardButton>
       </Flex>
