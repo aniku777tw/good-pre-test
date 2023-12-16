@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Typography, Space, Flex, Input } from "antd";
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 
 import Utils from "../utils/utils";
 import AlertBox from "./AlertBox";
@@ -10,7 +10,7 @@ const StyledInputNumber = styled(Input)`
   width: 250px;
 `;
 
-function PriceInput({ onChange }) {
+function PriceInput({ price, onChange }) {
   const [status, setStatus] = useState("");
   const [stringNumber, setStringNumber] = useState(0);
   const inputRef = useRef(null);
@@ -19,7 +19,7 @@ function PriceInput({ onChange }) {
   const handleInputChange = (e) => {
     const noCommaStrNumber = e.target.value.replaceAll(/,/g, "");
 
-    const checkInputCharRegex = /^\d+(\.\d*)?$/;
+    const checkInputCharRegex = /^(\d+)?(\.\d*)?$/;
     if (!checkInputCharRegex.test(noCommaStrNumber) && noCommaStrNumber) {
       return;
     }
@@ -32,7 +32,12 @@ function PriceInput({ onChange }) {
     focused.current = [e.target.value, e.target.selectionStart];
   };
 
-  useEffect(() => {
+  const parseStringNumberOnComplete = () => {
+    if (!price) return;
+    setStringNumber(Utils.addComma(price.toString()));
+  };
+
+  useLayoutEffect(() => {
     if (!focused.current) {
       return;
     }
@@ -57,6 +62,8 @@ function PriceInput({ onChange }) {
             ref={inputRef}
             value={stringNumber}
             onInput={(e) => handleInputChange(e)}
+            onBlur={() => parseStringNumberOnComplete()}
+            onPressEnter={() => parseStringNumberOnComplete()}
             placeholder="請輸入費用"
             status={status}
           />
@@ -68,6 +75,7 @@ function PriceInput({ onChange }) {
 }
 
 PriceInput.propTypes = {
+  price: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
