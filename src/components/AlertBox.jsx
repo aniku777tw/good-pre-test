@@ -5,13 +5,14 @@ import PropTypes from "prop-types";
 
 const AlertFlexBox = styled(Flex)`
   margin: 0px;
-  padding: 3px 10px;
+  padding: 15px 10px 3px 10px;
   color: #f55f21;
   background-color: #FBECEA;
-  border-radius: 3px;
+  border-radius: 7px;
   font-size: 12px;
   position: relative;
-  top: 0px;
+  z-index: -1;
+  top: -12px;
   
 `;
 

@@ -40,7 +40,7 @@ function AgeGroupSelect({ ageGroup, onChange, isOverlap }) {
   }, [isOverlap]);
 
   return (
-    <Flex width="1300px">
+    <Flex>
       <Space direction="vertical">
         <Typography.Text type="secondary">年齡</Typography.Text>
         <Flex vertical>

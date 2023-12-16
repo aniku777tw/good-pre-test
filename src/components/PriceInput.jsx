@@ -8,6 +8,9 @@ import AlertBox from "./AlertBox";
 
 const StyledInputNumber = styled(Input)`
   width: 250px;
+  .ant-input-group-addon {
+    background-color: #FBFBFB;
+  }
 `;
 
 function PriceInput({ price, onChange }) {
