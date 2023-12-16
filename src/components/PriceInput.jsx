@@ -22,6 +22,7 @@ function PriceInput({ price, onChange }) {
   const handleInputChange = (e) => {
     const noCommaNumberStr = e.target.value.replaceAll(/,/g, "");
     // check if the input is valid
+    if (!/^(-)?(\d+)?(\.\d*)?$/.test(noCommaNumberStr) && noCommaNumberStr) {
       return;
     }
 
