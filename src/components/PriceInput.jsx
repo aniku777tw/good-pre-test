@@ -1,22 +1,35 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Typography, Space, InputNumber, Flex } from "antd";
+import { Typography, Space, Flex, Input } from "antd";
+import { useState } from "react";
 
-import AlertBox from "./AlertBox";
 import Utils from "../utils/utils";
+import AlertBox from "./AlertBox";
 
-const StyledInputNumber = styled(InputNumber)`
+const StyledInputNumber = styled(Input)`
   width: 250px;
 `;
 
-function PriceInput({ price, onChange }) {
+function PriceInput({ onChange }) {
   const [status, setStatus] = useState("");
+  const [stringNumber,setStringNumber] = useState(0);
 
-  const handleInputChange = (value) => {
-    value ? setStatus("") : setStatus("error");
-    onChange({ price: value ? parseFloat(value) : null });
+  const handleInputChange = (e) => {
+    
+    const noCommaStrNumber =e.target.value.replaceAll(/,/g, '')
+
+    const checkInputCharRegex = /^\d+(\.\d*)?$/;
+    if(!checkInputCharRegex.test(noCommaStrNumber) && noCommaStrNumber){
+        return
+    }
+
+    onChange({ price: e.target.value ? parseFloat(noCommaStrNumber) : null });
+    setStringNumber(Utils.addComma(noCommaStrNumber))
+
+    noCommaStrNumber ? setStatus("") : setStatus("error");
   };
+
+  
 
   return (
     <Space direction="vertical">
@@ -27,13 +40,10 @@ function PriceInput({ price, onChange }) {
             addonBefore={
               <Typography.Text type="secondary">TWD</Typography.Text>
             }
-            value={price}
-            formatter={(value) => Utils.addComma(value)}
-            parser={(value) => Utils.inputParser(value)}
-            onChange={(value) => handleInputChange(value)}
+            value={stringNumber}
+            onChange={(e) => handleInputChange(e)}
             placeholder="請輸入費用"
             controls={false}
-            stringMode
             status={status}
           />
         </Space.Compact>
@@ -45,7 +55,6 @@ function PriceInput({ price, onChange }) {
 
 PriceInput.propTypes = {
   onChange: PropTypes.func.isRequired,
-  price: PropTypes.number,
 };
 
 export default PriceInput;

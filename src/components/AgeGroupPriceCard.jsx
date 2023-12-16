@@ -61,7 +61,6 @@ function AgeGroupPriceCard({
             isOverlap={isOverlap}
           />
           <PriceInput
-            price={ageGroupPriceArray[index].price}
             onChange={(data) => changeAgeGroupPrice(index, data)}
           />
         </Flex>
