@@ -5,10 +5,6 @@ const addComma = (numberStr) => {
   return result;
 };
 
-const inputParser = (numberStr) => {
-  return numberStr.replace(/\$\s?|(,*)/g, "");
-};
-
 const getNumberIntervals = (intervals) => {
   const countMap = {};
   [...Array(21).keys()].forEach((age) => Object.assign(countMap, { [age]: 0 }));
@@ -67,7 +63,6 @@ const findMinMaxRanges = (numberArray) => {
 const Utils = {
   addComma,
   getNumberIntervals,
-  inputParser,
   covertRangeToNumberArray,
 };
 
