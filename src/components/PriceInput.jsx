@@ -26,7 +26,9 @@ function PriceInput({ price, onChange }) {
       return;
     }
 
-    onChange({ price: e.target.value ? parseFloat(noCommaNumberStr) : null });
+    onChange({
+      price: e.target.value ? parseFloat(noCommaNumberStr) || 0 : null,
+    });
     setNumberStr(Utils.addComma(noCommaNumberStr));
 
     noCommaNumberStr ? setStatus("") : setStatus("error");
@@ -35,7 +37,7 @@ function PriceInput({ price, onChange }) {
   };
 
   const parseStringNumberOnComplete = (price) => {
-    if (!price) return;
+    if (price === null) return;
     setNumberStr(Utils.addComma(price.toString()));
   };
 
@@ -77,7 +79,7 @@ function PriceInput({ price, onChange }) {
 }
 
 PriceInput.propTypes = {
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number,
   onChange: PropTypes.func.isRequired,
 };
 
