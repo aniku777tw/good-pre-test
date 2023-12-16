@@ -25,6 +25,24 @@ describe("addComma", () => {
     expect(commaNumber).toBe("123");
   });
 
+  it("should return string without zero start", () => {
+    const numberStr = "00123.12312";
+    const commaNumber = Utils.addComma(numberStr);
+    expect(commaNumber).toBe("123.12312");
+  });
+
+  it("should return float number with a lot of 0s", () => {
+    const numberStr = "0000000.12312";
+    const commaNumber = Utils.addComma(numberStr);
+    expect(commaNumber).toBe("0.12312");
+  });
+
+  it("should return float number with 0", () => {
+    const numberStr = "0.12312";
+    const commaNumber = Utils.addComma(numberStr);
+    expect(commaNumber).toBe("0.12312");
+  });
+
   it("should return empty string", () => {
     const numberStr = "";
     const commaNumber = Utils.addComma(numberStr);
