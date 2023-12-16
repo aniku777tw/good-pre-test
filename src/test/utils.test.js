@@ -43,6 +43,12 @@ describe("addComma", () => {
     expect(commaNumber).toBe("0.12312");
   });
 
+  it("should return float number with . start", () => {
+    const numberStr = ".12312";
+    const commaNumber = Utils.addComma(numberStr);
+    expect(commaNumber).toBe(".12312");
+  });
+
   it("should return empty string", () => {
     const numberStr = "";
     const commaNumber = Utils.addComma(numberStr);
