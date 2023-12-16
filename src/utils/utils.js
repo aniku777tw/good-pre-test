@@ -1,8 +1,7 @@
 const addComma = (numberStr) => {
-  const [integerPart, decimalPart] = numberStr.split(".");
-  const integerPartWithComma = integerPart.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-  const parsedDecimalPart = decimalPart ? `.${decimalPart}` : "";
-  const result = `${integerPartWithComma}${parsedDecimalPart}`;
+  const result = numberStr
+    .replace(/^0+(?=\d)/, "")
+    .replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1,");
   return result;
 };
 
@@ -49,21 +48,21 @@ const covertRangeToNumberArray = (range) => {
 };
 
 const findMinMaxRanges = (numberArray) => {
-    const result = [];
-    let startNum, endNum;
-    for (const num of numberArray) {
-      if (endNum === undefined || num !== endNum + 1) {
-        startNum = num;
-        endNum = num;
-      } else {
-        endNum = num;
-      }
-      if (!numberArray.includes(num + 1)) {
-        result.push([startNum, endNum]);
-      }
+  const result = [];
+  let startNum, endNum;
+  for (const num of numberArray) {
+    if (endNum === undefined || num !== endNum + 1) {
+      startNum = num;
+      endNum = num;
+    } else {
+      endNum = num;
     }
-    return result;
-  };
+    if (!numberArray.includes(num + 1)) {
+      result.push([startNum, endNum]);
+    }
+  }
+  return result;
+};
 
 const Utils = {
   addComma,
