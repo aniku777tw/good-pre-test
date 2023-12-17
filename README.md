@@ -2,9 +2,14 @@
 
 https://aniku777tw.github.io/good-pre-test
 
-## Getting Started with Create React App
+## Preview
+Mobile            |  PC
+:-------------------------:|:-------------------------:
+<img src="https://user-images.githubusercontent.com/19197054/291026823-fb9a2fe0-9d33-47d6-86f4-8b69602eaa2e.png" width="30%" >  |  <img src="https://user-images.githubusercontent.com/19197054/291026748-94f25b3d-975f-40e4-a172-2f754519d689.png" width="100%" >
+  
+  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
