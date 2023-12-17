@@ -4,8 +4,8 @@ import DefaultHeader from "./components/Header";
 
 
 const Container = styled.div`
-  width: 100vw;
   justify-content: center;
+  align-items: center;
   display: flex;
   margin: 20px;
 `;

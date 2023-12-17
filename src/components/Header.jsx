@@ -7,22 +7,31 @@ const StyledHeader = styled(Layout.Header)`
   position: sticky;
   top: 0;
   z-index: 1500;
-  width: 100%;
+  width: 100vw;
 `;
 
 function DefaultHeader() {
   return (
     <StyledHeader>
-      <Space size="middle">
-        <Flex>Good Admin</Flex>
-        <a
-          target="_blank"
-          href="https://github.com/aniku777tw"
-          rel="noreferrer"
-        >
-          Github
-        </a>
-      </Space>
+      <Flex justify="space-between">
+        <Flex>Antarctica Yo Good Admin</Flex>
+        <Space size="large">
+          <a
+            target="_blank"
+            href="https://github.com/aniku777tw/good-pre-test"
+            rel="noreferrer"
+          >
+            Github
+          </a>
+          <a
+            target="_blank"
+            href="https://www.cakeresume.com/e102777tw"
+            rel="noreferrer"
+          >
+            Resume
+          </a>
+        </Space>
+      </Flex>
     </StyledHeader>
   );
 }
