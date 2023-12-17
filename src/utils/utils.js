@@ -60,10 +60,13 @@ const findMinMaxRanges = (numberArray) => {
   return result;
 };
 
+const BREAK_POINT = "600px"
+
 const Utils = {
   addComma,
   getNumberIntervals,
   covertRangeToNumberArray,
+  BREAK_POINT
 };
 
 export default Utils;

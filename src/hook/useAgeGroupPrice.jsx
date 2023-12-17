@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Utils from "../utils/utils";
+import Utils from "../utils";
 
 export default function useAgeGroupPrice() {
   const [ageGroupPriceArray, setAgeGroupPriceArray] = useState([

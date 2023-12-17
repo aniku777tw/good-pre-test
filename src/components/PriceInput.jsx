@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Typography, Space, Flex, Input } from "antd";
 import { useState, useLayoutEffect, useRef } from "react";
 
-import Utils from "../utils/utils";
+import Utils from "../utils";
 import AlertBox from "./AlertBox";
 
 const StyledInputNumber = styled(Input)`

@@ -1,36 +1,60 @@
-import { Space, Flex, Layout } from "antd";
+import { Button, Flex, Layout } from "antd";
 import styled from "styled-components";
+import { Dropdown } from "antd";
 
 const StyledHeader = styled(Layout.Header)`
   background-color: #ffffff;
   border-bottom: 1px solid #d9d9d9;
   position: sticky;
   top: 0;
-  z-index: 1500;
+  z-index: 1000;
   width: 100vw;
 `;
 
+const StyledDropdown = styled(Dropdown)`
+  position: absolute;
+  right: 20px;
+`;
+
 function DefaultHeader() {
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          href="https://github.com/aniku777tw/good-pre-test"
+          rel="noreferrer"
+        >
+          Github
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          href="https://www.cakeresume.com/e102777tw"
+          rel="noreferrer"
+        >
+          Resume
+        </a>
+      ),
+    },
+  ];
+
   return (
     <StyledHeader>
-      <Flex justify="space-between">
+      <Flex justify="center" align="center">
         <Flex>Antarctica Yo Good Admin</Flex>
-        <Space size="large">
-          <a
-            target="_blank"
-            href="https://github.com/aniku777tw/good-pre-test"
-            rel="noreferrer"
-          >
-            Github
-          </a>
-          <a
-            target="_blank"
-            href="https://www.cakeresume.com/e102777tw"
-            rel="noreferrer"
-          >
-            Resume
-          </a>
-        </Space>
+        <StyledDropdown
+          menu={{
+            items,
+          }}
+        >
+          <Button type="link">Info</Button>
+        </StyledDropdown>
       </Flex>
     </StyledHeader>
   );

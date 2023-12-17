@@ -1,4 +1,4 @@
-import Utils from "../utils/utils";
+import Utils from "../utils";
 
 describe("addComma", () => {
   it("should add comma to numberStr", () => {

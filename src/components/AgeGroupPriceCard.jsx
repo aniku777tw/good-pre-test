@@ -4,15 +4,26 @@ import { Typography, Divider, Flex, Button, Space } from "antd";
 
 import PriceInput from "./PriceInput";
 import AgeGroupSelect from "./AgeGroupSelect";
+import Utils from "../utils";
 
 const Card = styled(Flex)`
   border: 0px;
   margin: 10px;
+  @media (max-width: ${Utils.BREAK_POINT}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const CardContainer = styled(Space)`
   width: 550px;
   height: 130px;
+  @media (max-width: ${Utils.BREAK_POINT}) {
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    width: 280px;
+  }
 `;
 
 const CardDivider = styled(Divider)`
@@ -22,12 +33,23 @@ const CardDivider = styled(Divider)`
 
 const DeletePriceCardButton = styled(Button)`
   padding: 0px;
+  @media (max-width: ${Utils.BREAK_POINT}) {
+    position: absolute;
+    margin-left: 140px;
+  }
 `;
 
 const StyledTitle = styled(Typography.Title)`
   &.ant-typography {
     color: #4b4b4b;
     margin: 0px;
+  }
+`;
+
+const AgeGroupPriceInputsLayout = styled(Flex)`
+  @media (max-width: ${Utils.BREAK_POINT}) {
+    flex-direction: column;
+    height: 160px;
   }
 `;
 
@@ -54,7 +76,7 @@ function AgeGroupPriceCard({
             </DeletePriceCardButton>
           )}
         </Flex>
-        <Flex justify="space-between">
+        <AgeGroupPriceInputsLayout justify="space-between">
           <AgeGroupSelect
             ageGroup={ageGroupPriceArray[index].ageGroup}
             onChange={(data) => changeAgeGroupPrice(index, data)}
@@ -64,7 +86,7 @@ function AgeGroupPriceCard({
             price={ageGroupPriceArray[index].price}
             onChange={(data) => changeAgeGroupPrice(index, data)}
           />
-        </Flex>
+        </AgeGroupPriceInputsLayout>
       </CardContainer>
       <Flex justify="flex-end">
         <Typography.Text type="secondary">輸入0表示免費</Typography.Text>
