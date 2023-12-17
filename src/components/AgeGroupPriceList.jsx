@@ -1,10 +1,11 @@
 import { Flex, Button, Space } from "antd";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import useAgeGroupPrice from "../hook/useAgeGroupPrice";
 import AgeGroupPriceCard from "./AgeGroupPriceCard";
+import useScroll from "../hook/useScroll";
 
 const AddPriceCardButton = styled(Button)`
   padding: 0px;
@@ -17,8 +18,8 @@ const AddPriceCardButton = styled(Button)`
 `;
 
 function AgeGroupPriceList({ onChange }) {
-  const [scroll, setScroll] = useState(null); // for scrolling
   const listRef = useRef(null);
+  const { setScroll } = useScroll(listRef);
 
   const {
     ageGroupPriceArray,
@@ -29,24 +30,14 @@ function AgeGroupPriceList({ onChange }) {
     isAddButtonDisable,
   } = useAgeGroupPrice();
 
-  const scrollListToEnd = () => {
-    listRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-    });
-    setScroll(false);
-  };
-
   useEffect(() => {
-    scroll && scrollListToEnd();
-
     onChange(
       ageGroupPriceArray.map((data) => ({
         ageGroup: data.ageGroup,
         price: data.price,
       })) // remove key to match pre-test desired answer
     );
-  }, [onChange, ageGroupPriceArray, scroll]);
+  }, [onChange, ageGroupPriceArray]);
 
   return (
     <Space direction="vertical" ref={listRef}>
