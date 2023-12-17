@@ -5,18 +5,13 @@ export default function useAgeGroupPrice() {
   const [ageGroupPriceArray, setAgeGroupPriceArray] = useState([
     { key: new Date().getTime(), ageGroup: [0, 0], price: 0 },
   ]);
-  const [isAdd, setIsAdd] = useState(null); // for scrolling
 
   const deleteAgeGroupPrice = (index) => {
-    setIsAdd(false);
-
     ageGroupPriceArray.splice(index, 1);
     setAgeGroupPriceArray([...ageGroupPriceArray]);
   };
 
   const addAgeGroupPrice = () => {
-    setIsAdd(true);
-
     setAgeGroupPriceArray([
       ...ageGroupPriceArray,
       { key: new Date().getTime(), ageGroup: [0, 0], price: 0 },
@@ -25,8 +20,6 @@ export default function useAgeGroupPrice() {
   };
 
   const changeAgeGroupPrice = (index, data) => {
-    setIsAdd(false);
-
     ageGroupPriceArray[index] = { ...ageGroupPriceArray[index], ...data };
     setAgeGroupPriceArray([...ageGroupPriceArray]);
   };
@@ -59,6 +52,5 @@ export default function useAgeGroupPrice() {
     checkAgeGroupOverlap,
     isAddButtonDisable,
     ageGroupPriceArray,
-    isAdd,
   };
 }

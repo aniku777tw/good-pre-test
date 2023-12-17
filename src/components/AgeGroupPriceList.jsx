@@ -1,7 +1,7 @@
 import { Flex, Button, Space } from "antd";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import useAgeGroupPrice from "../hook/useAgeGroupPrice";
 import AgeGroupPriceCard from "./AgeGroupPriceCard";
@@ -17,7 +17,9 @@ const AddPriceCardButton = styled(Button)`
 `;
 
 function AgeGroupPriceList({ onChange }) {
+  const [scroll, setScroll] = useState(null); // for scrolling
   const listRef = useRef(null);
+
   const {
     ageGroupPriceArray,
     addAgeGroupPrice,
@@ -25,22 +27,26 @@ function AgeGroupPriceList({ onChange }) {
     checkAgeGroupOverlap,
     deleteAgeGroupPrice,
     isAddButtonDisable,
-    isAdd,
   } = useAgeGroupPrice();
 
+  const scrollListToEnd = () => {
+    listRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+    setScroll(false);
+  };
+
   useEffect(() => {
-    isAdd &&
-      listRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-      }); // scroll when item add
+    scroll && scrollListToEnd();
+
     onChange(
       ageGroupPriceArray.map((data) => ({
         ageGroup: data.ageGroup,
         price: data.price,
       })) // remove key to match pre-test desired answer
     );
-  }, [onChange, ageGroupPriceArray, isAdd]);
+  }, [onChange, ageGroupPriceArray, scroll]);
 
   return (
     <Space direction="vertical" ref={listRef}>
@@ -57,7 +63,10 @@ function AgeGroupPriceList({ onChange }) {
       <Flex>
         <AddPriceCardButton
           type="text"
-          onClick={addAgeGroupPrice}
+          onClick={() => {
+            addAgeGroupPrice();
+            setScroll(true);
+          }}
           disabled={isAddButtonDisable()}
         >
           ＋新增價格設定
