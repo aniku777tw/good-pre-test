@@ -1,6 +1,6 @@
 const addComma = (numberStr) => {
   const result = numberStr
-    // .replace(/^0+(?=\d)/, "") // remove 0 in front of number => this kind of data will be parse when onPressEnter, onBlur
+    // .replace(/^0+(?=\d)/, "") // remove 0 in front of number => this kind of data will be parsed when onPressEnter, onBlur
     .replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1,"); // add commas
   return result;
 };
