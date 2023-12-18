@@ -5,9 +5,7 @@ https://aniku777tw.github.io/good-pre-test
 ## Preview
 Mobile            |  PC
 :-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/19197054/291026823-fb9a2fe0-9d33-47d6-86f4-8b69602eaa2e.png" width="30%" >  |  <img src="https://user-images.githubusercontent.com/19197054/291026748-94f25b3d-975f-40e4-a172-2f754519d689.png" width="100%" >
-  
-  
+<img src="https://user-images.githubusercontent.com/19197054/291115595-9eac9399-a065-4be3-a175-20c6712873c6.jpg" width="38%" >  |  <img src="https://user-images.githubusercontent.com/19197054/291115468-1b853ff7-55e6-435e-a48c-872b4bd151c4.png" width="100%" >
 
 
 
