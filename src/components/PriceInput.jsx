@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Typography, Space, Flex, Input } from "antd";
-import { useState, useLayoutEffect, useRef } from "react";
+import { useState } from "react";
 
 import Utils from "../utils";
 import AlertBox from "./AlertBox";
+import useCursorFocus from "../hook/useCursorFocus";
 
 const StyledInputNumber = styled(Input)`
   width: 250px;
@@ -16,8 +17,7 @@ const StyledInputNumber = styled(Input)`
 function PriceInput({ price, onChange }) {
   const [status, setStatus] = useState("");
   const [numberStr, setNumberStr] = useState(0);
-  const inputRef = useRef(null);
-  const focused = useRef(null);
+  const { inputRef, focused } = useCursorFocus(numberStr);
 
   const handleInputChange = (e) => {
     const noCommaNumberStr = e.target.value.replaceAll(/,/g, "");
@@ -40,19 +40,6 @@ function PriceInput({ price, onChange }) {
     if (price === null) return;
     setNumberStr(Utils.addComma(price.toString()));
   };
-
-  useLayoutEffect(() => {
-    if (!focused.current) {
-      return;
-    }
-    const [prevText, cursor] = focused.current;
-    const prevCommaCount = prevText.split(",").length - 1;
-    const currentCommaCount = numberStr.split(",").length - 1;
-    const offset = currentCommaCount - prevCommaCount;
-    const curr = cursor + offset;
-    const pos = curr < 0 ? 0 : curr;
-    inputRef.current.setSelectionRange(pos, pos);
-  }, [numberStr]);
 
   return (
     <Space direction="vertical">

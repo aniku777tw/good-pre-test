@@ -60,7 +60,7 @@ function AgeGroupPriceCard({
   ageGroupPriceArray,
   checkAgeGroupOverlap,
 }) {
-  const isOverlap = checkAgeGroupOverlap(index);
+ 
   return (
     <Card vertical>
       <CardContainer direction="vertical">
@@ -80,7 +80,7 @@ function AgeGroupPriceCard({
           <AgeGroupSelect
             ageGroup={ageGroupPriceArray[index].ageGroup}
             onChange={(data) => changeAgeGroupPrice(index, data)}
-            isOverlap={isOverlap}
+            isOverlap={checkAgeGroupOverlap(index)}
           />
           <PriceInput
             price={ageGroupPriceArray[index].price}
