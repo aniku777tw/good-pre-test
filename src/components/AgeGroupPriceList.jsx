@@ -63,7 +63,6 @@ function AgeGroupPriceList({ onChange }) {
           ＋新增價格設定
         </AddPriceCardButton>
       </Flex>
-      <div></div>
     </Space>
   );
 }
