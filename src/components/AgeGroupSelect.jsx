@@ -7,7 +7,7 @@ import AlertBox from "./AlertBox";
 import useAgeGroupSelect from "../hook/useAgeGroupSelect";
 
 const SelectAddOn = styled(Space)`
-  width: 10%;
+  width: 11%;
   background-color: #fbfbfb;
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
