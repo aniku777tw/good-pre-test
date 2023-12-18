@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { Flex, Select, Space, Typography } from "antd";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import AlertBox from "./AlertBox";
@@ -27,17 +26,12 @@ const Compact = styled(Space.Compact)`
 
 function AgeGroupSelect({ ageGroup, onChange, isOverlap }) {
 
-  const [status, setStatus] = useState("");
   const {
     startSelectorOptions,
     endSelectorOptions,
     startSelectorOnChange,
     endSelectorOnChange,
   } = useAgeGroupSelect(ageGroup, onChange);
-
-  useEffect(() => {
-    isOverlap ? setStatus("error") : setStatus("");
-  }, [isOverlap]);
 
   return (
     <Flex>
@@ -46,7 +40,7 @@ function AgeGroupSelect({ ageGroup, onChange, isOverlap }) {
         <Flex vertical>
           <Compact size="large">
             <Selector
-              status={status}
+              status={isOverlap ? "error" : ""}
               value={ageGroup[0]}
               options={startSelectorOptions}
               onSelect={(value) => startSelectorOnChange(value)}
@@ -55,13 +49,13 @@ function AgeGroupSelect({ ageGroup, onChange, isOverlap }) {
               <Typography.Text type="secondary">~</Typography.Text>
             </SelectAddOn>
             <Selector
-              status={status}
+              status={isOverlap ? "error" : ""}
               value={ageGroup[1]}
               options={endSelectorOptions}
               onSelect={(value) => endSelectorOnChange(value)}
             />
           </Compact>
-          {status && <AlertBox message="年齡區間不可重疊" />}
+          {isOverlap && <AlertBox message="年齡區間不可重疊" />}
         </Flex>
       </Space>
     </Flex>
