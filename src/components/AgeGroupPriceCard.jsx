@@ -31,7 +31,7 @@ const CardDivider = styled(Divider)`
   margin-top: 10px;
 `;
 
-const DeletePriceCardButton = styled(Button)`
+const DeleteCardButton = styled(Button)`
   padding: 0px;
   @media (max-width: ${Utils.BREAK_POINT}) {
     position: absolute;
@@ -67,13 +67,13 @@ function AgeGroupPriceCard({
         <Flex justify="space-between" align="center">
           <StyledTitle level={4}>價格設定 - {index + 1}</StyledTitle>
           {index !== 0 && (
-            <DeletePriceCardButton
+            <DeleteCardButton
               type="text"
               danger
               onClick={() => deleteAgeGroupPrice(index)}
             >
               ✕ 移除
-            </DeletePriceCardButton>
+            </DeleteCardButton>
           )}
         </Flex>
         <AgeGroupPriceInputsLayout justify="space-between">

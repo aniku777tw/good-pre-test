@@ -7,7 +7,7 @@ import useAgeGroupPrice from "../hook/useAgeGroupPrice";
 import AgeGroupPriceCard from "./AgeGroupPriceCard";
 import useScroll from "../hook/useScroll";
 
-const AddPriceCardButton = styled(Button)`
+const AddCardButton = styled(Button)`
   padding: 0px;
   margin-bottom: 20px;
   color: #27b7ab;
@@ -52,7 +52,7 @@ function AgeGroupPriceList({ onChange }) {
         />
       ))}
       <Flex>
-        <AddPriceCardButton
+        <AddCardButton
           type="text"
           onClick={() => {
             addAgeGroupPrice();
@@ -61,7 +61,7 @@ function AgeGroupPriceList({ onChange }) {
           disabled={isAddButtonDisable()}
         >
           ＋新增價格設定
-        </AddPriceCardButton>
+        </AddCardButton>
       </Flex>
     </Space>
   );
