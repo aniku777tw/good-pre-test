@@ -44,10 +44,19 @@ function DefaultHeader() {
     },
   ];
 
+  const handleButtonClick = ()=>{
+    window.location.href = 'https://asiayo.com/zh-tw/';
+  }
+    
+
   return (
     <StyledHeader>
-      <Flex justify="center" align="center">
-        <Flex>Antarctica Yo Good Admin</Flex>
+      <Flex
+        justify="center"
+        align="center"
+        style={{ width: "100%", height: "100%" }}
+      >
+        <Button type="link" onClick={handleButtonClick}>Antarctica Yo Good Admin</Button>
         <StyledDropdown
           menu={{
             items,
